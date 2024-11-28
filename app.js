@@ -1,6 +1,7 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const fs = require('fs');
+var cors = require('cors')
 
 // create our express app
 const app = express()
@@ -9,6 +10,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 // route
 const routes = require('./Routes/Route')
+app.use(cors())
 app.use('/', routes)
 
 //start server

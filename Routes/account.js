@@ -16,6 +16,26 @@ const getAccountData = () => {
     return JSON.parse(jsonData)    
 }
 
+accountRoutes.get('/', (req, res) => {
+  //res.send('{code:200,desc:success}');
+
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify({ "status":"success" }));
+
+});
+
+accountRoutes.post('/parse_body', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  var username = req.body.username;
+  var password = req.body.password;
+  console.log(username);
+  console.log(password);
+  if ((username=="isara_nakavisute@hotmail.com") && (password=="12345678"))
+   res.end(JSON.stringify({ "status":"passed" }));
+  else
+  res.end(JSON.stringify({ "status":"failed" }));
+});
+
 
 // reading the data
 accountRoutes.get('/account', (req, res) => {
